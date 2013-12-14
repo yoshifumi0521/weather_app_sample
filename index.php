@@ -32,7 +32,7 @@
 
         //パラメーターで郵便番号を受け取る。
         var params = getUrlVars();
-        var postcode = params["postcode"];
+        var postcode = params["zip1"]+params["zip2"];
         $("#postcode").html(postcode);
 
         //YahooAPIで、郵便番号を使って、位置情報を取得
