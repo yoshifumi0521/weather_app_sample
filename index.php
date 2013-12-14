@@ -22,7 +22,13 @@
 
 <strong>city</strong>は、<span id="city"></span><br>
 
+<strong>今日</strong>は、<span id="date"></span><br>
 
+<strong>表示する天気予報の日付は、</strong><span id="weather_forecast_date"></span><br>
+
+<strong>表示する天気予報の天気テロップ番号は、</strong><span id="weather_forecast_telop"></span><br>
+
+<strong>表示する天気予報の説明は、</strong><span id="weather_forecast_wDescription"></span><br>
 
 
 </body>
@@ -79,8 +85,74 @@
                 $("#prefecture").html(prefecture);
                 $("#city").html(city);
 
+                //天気予報APIで情報を取得
+                var weather_api_domain = "w001.tenkiapi.jp";
+                var weather_api_userid = "ddd01898684d17699c30acba0bf1386702646231";
+                return $.ajax({
+                    url: 'http://'+weather_api_domain+'/'+weather_api_userid+'/weekly/?p1='+local_code+'&type=jsonp&callback=?',
+                    type: "GET",
+                    dataType: 'json'
+                }).next(function(data){
+                    //今日の時刻と曜日を調べる。
+                    var hiduke = new Date();
+                    var year = hiduke.getFullYear();
+                    var month = hiduke.getMonth()+1;
+                    var hour = hiduke.getHours();
+                    var date = hiduke.getDate();
+                    var day_array = new Array("日","月","火","水","木","金","土");
+                    var day_number = hiduke.getDay();
+                    var day = day_array[day_number];
+                    $("#date").html(month+"-"+date+"-"+hour+":00"+"("+day+")");
+
+                    //土曜日の天気の情報を取得する。
+                    var weather;
+                    var n;
+                    //土曜日か、それ以外で判定する。
+                    if(day = "土")
+                    {
+                        console.log("土曜日");
+                        //11時前かどうかで判定する。
+                        if(hour < 11)
+                        {
+                            console.log("11時以前");
+                            n = 0;
+                            weather = data["weekly"]["weather"][n];
+                        }
+                        else
+                        {
+                            console.log("11時以降");
+                            n = 6;
+                            weather = data["weekly"]["weather"][n];
+                        }
+                    }
+                    else
+                    {
+                        console.log("土曜日以外");
+                        //11時前かどうかで判定する。
+                        if(hour < 11)
+                        {
+                            console.log("11時以前");
+                            n = 6 - day_number;
+                            weather = data["weekly"]["weather"][n];
+                        }
+                        else
+                        {
+                            console.log("11時以降");
+                            n = 5 - day_number;
+                            weather = data["weekly"]["weather"][n];
+                        }
+                    }
+                    console.log(weather);
+                    $("#weather_forecast_date").html(weather["date"]+"(土)");
+                    $("#weather_forecast_telop").html(weather["telop"]);
+                    $("#weather_forecast_wDescription").html(weather["wDescription"]);
 
 
+
+
+
+
+                });
 
 
             });
