@@ -30,6 +30,8 @@
 
 <strong>表示する天気予報の説明は、</strong><span id="weather_forecast_wDescription"></span><br>
 
+<strong>表示する天気予報パターンは、</strong><span id="weather_forecast_pattern"></span><br>
+
 
 </body>
 
@@ -103,7 +105,6 @@
                     var day_number = hiduke.getDay();
                     var day = day_array[day_number];
                     $("#date").html(month+"-"+date+"-"+hour+":00"+"("+day+")");
-
                     //土曜日の天気の情報を取得する。
                     var weather;
                     var n;
@@ -142,15 +143,23 @@
                             weather = data["weekly"]["weather"][n];
                         }
                     }
-                    console.log(weather);
                     $("#weather_forecast_date").html(weather["date"]+"(土)");
                     $("#weather_forecast_telop").html(weather["telop"]);
                     $("#weather_forecast_wDescription").html(weather["wDescription"]);
 
-
-
-
-
+                    return $.ajax({
+                        url: 'weatherpattern.json',
+                        type: "GET",
+                        dataType: 'json'
+                    }).next(function(data){
+                        jQuery.each(data, function(i,val)
+                        {
+                            if(weather["telop"] == val["code"])
+                            {
+                                $("#weather_forecast_pattern").html(val["weather"]);
+                            }
+                        });
+                    });
 
                 });
 

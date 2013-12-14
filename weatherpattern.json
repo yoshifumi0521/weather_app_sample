@@ -1,0 +1,728 @@
+[
+  {
+    "code"       : "100",
+    "description": "晴",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "101",
+    "description": "晴時々曇",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "102",
+    "description": "晴一時雨",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "103",
+    "description": "晴時々雨",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "104",
+    "description": "晴一時雪",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "105",
+    "description": "晴時々雪",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "106",
+    "description": "晴一時雨か雪(雨が主体の時)",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "107",
+    "description": "晴時々雨か雪(雨が主体の時)",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "108",
+    "description": "晴一時雨か雷雨",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "110",
+    "description": "晴のち時々曇",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "111",
+    "description": "晴のち曇",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "112",
+    "description": "晴のち一時雨",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "113",
+    "description": "晴のち時々雨",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "114",
+    "description": "晴のち雨",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "115",
+    "description": "晴のち一時雪",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "116",
+    "description": "晴のち時々雪",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "117",
+    "description": "晴のち雪",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "118",
+    "description": "晴のち雨か雪(雨が主体の時)",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "119",
+    "description": "晴のち雨か雷雨",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "120",
+    "description": "晴朝夕一時雨",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "121",
+    "description": "晴朝のうち一時雨",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "122",
+    "description": "晴夕方一時雨",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "123",
+    "description": "晴山沿い雷雨",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "124",
+    "description": "晴山沿い雪",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "125",
+    "description": "晴午後は雷雨",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "126",
+    "description": "晴昼頃から雨",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "127",
+    "description": "晴夕方から雨",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "128",
+    "description": "晴夜は雨",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "129",
+    "description": "晴夜半から雨",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "130",
+    "description": "朝のうち霧のち晴",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "131",
+    "description": "晴明け方霧",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "132",
+    "description": "晴朝夕曇",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "140",
+    "description": "晴時々雨で雷を伴う",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "160",
+    "description": "晴一時雪か雨(雪が主体の時)",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "170",
+    "description": "晴時々雪か雨(雪が主体の時)",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "181",
+    "description": "晴のち雪か雨(雪が主体の時)",
+    "weather"    : "sunny",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "200",
+    "description": "曇",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "201",
+    "description": "曇時々晴",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "202",
+    "description": "曇一時雨",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "203",
+    "description": "曇時々雨",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "204",
+    "description": "曇一時雪",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "205",
+    "description": "曇時々雪",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "206",
+    "description": "曇一時雨か雪(雨が主体の時)",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "207",
+    "description": "曇時々雨か雪(雨が主体の時)",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "208",
+    "description": "曇一時雨か雷雨",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "209",
+    "description": "霧",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "210",
+    "description": "曇のち時々晴",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "211",
+    "description": "曇のち晴",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "212",
+    "description": "曇のち一時雨",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "213",
+    "description": "曇のち時々雨",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "214",
+    "description": "曇のち雨",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "215",
+    "description": "曇のち一時雪",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "216",
+    "description": "曇のち時々雪",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "217",
+    "description": "曇のち雪",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "218",
+    "description": "曇のち雨か雪(雨が主体の時)",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "219",
+    "description": "曇のち雨か雷雨",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "220",
+    "description": "曇朝夕一時雨",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "221",
+    "description": "曇朝のうち一時雨",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "222",
+    "description": "曇夕方一時雨",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "223",
+    "description": "曇日中時々晴",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "224",
+    "description": "曇昼頃から雨",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "225",
+    "description": "曇夕方から雨",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "226",
+    "description": "曇夜は雨",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "227",
+    "description": "曇夜半から雨",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "228",
+    "description": "曇昼頃から雪",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "229",
+    "description": "曇夕方から雪",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "230",
+    "description": "曇夜は雪",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "231",
+    "description": "曇海上海岸は霧か霧雨",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "240",
+    "description": "曇時々雨で雷を伴う",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "250",
+    "description": "曇時々雪で雷を伴う",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "260",
+    "description": "曇一時雪か雨(雪が主体の時)",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "270",
+    "description": "曇時々雪か雨(雪が主体の時)",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "281",
+    "description": "曇のち雪か雨(雪が主体の時)",
+    "weather"    : "cloudy",
+    "roof"       : "open"
+  },
+  {
+    "code"       : "300",
+    "description": "雨",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "301",
+    "description": "雨時々晴",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "302",
+    "description": "雨時々止む",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "303",
+    "description": "雨時々雪",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "304",
+    "description": "雨か雪(雨が主体の時)",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "306",
+    "description": "大雨",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "308",
+    "description": "雨で暴風を伴う",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "309",
+    "description": "雨一時雪",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "311",
+    "description": "雨のち晴",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "313",
+    "description": "雨のち曇",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "314",
+    "description": "雨のち時々雪",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "315",
+    "description": "雨のち雪",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "316",
+    "description": "雨か雪のち晴(雨が主体の時)",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "317",
+    "description": "雨か雪のち曇(雨が主体の時)",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "320",
+    "description": "朝のうち雨のち晴",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "321",
+    "description": "朝のうち雨のち曇",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "322",
+    "description": "雨朝晩一時雪",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "323",
+    "description": "雨昼頃から晴",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "324",
+    "description": "雨夕方から晴",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "325",
+    "description": "雨夜は晴",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "326",
+    "description": "雨夕方から雪",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "327",
+    "description": "雨夜は雪",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "328",
+    "description": "雨一時強く降る",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "329",
+    "description": "雨一時みぞれ",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "340",
+    "description": "雪か雨(雪が主体の時)",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "350",
+    "description": "雨で雷を伴う",
+    "weather"    : "rainy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "361",
+    "description": "雪か雨のち晴(雪が主体の時)",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "371",
+    "description": "雪か雨のち曇(雪が主体の時)",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "400",
+    "description": "雪",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "401",
+    "description": "雪時々晴",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "402",
+    "description": "雪時々止む",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "403",
+    "description": "雪時々雨",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "405",
+    "description": "大雪",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "406",
+    "description": "風雪強い",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "407",
+    "description": "暴風雪",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "409",
+    "description": "雪一時雨",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "411",
+    "description": "雪のち晴",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "413",
+    "description": "雪のち曇",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "414",
+    "description": "雪のち雨",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "420",
+    "description": "朝のうち雪のち晴",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "421",
+    "description": "朝のうち雪のち曇",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "422",
+    "description": "雪昼頃から雨",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "423",
+    "description": "雪夕方から雨",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "424",
+    "description": "雪夜半から雨",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "425",
+    "description": "雪一時強く降る",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "426",
+    "description": "雪のちみぞれ",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "427",
+    "description": "雪一時みぞれ",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  },
+  {
+    "code"       : "450",
+    "description": "雪で雷を伴う",
+    "weather"    : "snowy",
+    "roof"       : "close"
+  }
+]
