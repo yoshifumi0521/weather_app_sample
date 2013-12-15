@@ -78,7 +78,12 @@
             var location = data["Feature"][0]["Geometry"]["Coordinates"];
             $("#location").html(location);
             df.resolve(location);
+        })
+        //取得できなかったとき。例えば、郵便番号が有効でなかった場合など。
+        .error(function(status) {
+            alert("エラーが発生しました");
         });
+
         return df.promise();
     }
 
@@ -114,6 +119,9 @@
             $("#prefecture").html(prefecture);
             $("#city").html(city);
             df.resolve(local_code);
+        })
+        .error(function(status) {
+            alert("エラーが発生しました");
         });
         return df.promise();
     }
@@ -172,6 +180,9 @@
             $("#weather_forecast_telop").html(weather["telop"]);
             $("#weather_forecast_wDescription").html(weather["wDescription"]);
             df.resolve(weather["telop"]);
+        })
+        .error(function(status) {
+            alert("エラーが発生しました");
         });
         return df.promise();
     }
@@ -192,11 +203,10 @@
                     $("#weather_forecast_pattern").html(val["weather"]);
                 }
             });
+        }).error(function(status) {
+            alert("エラーが発生しました");
         });
     }
-
-
-
 
     //緯度経度の2点間の距離の計算をする。
     function cal_distance(lat1, lon1, lat2, lon2){
