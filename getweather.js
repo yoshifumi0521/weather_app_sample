@@ -135,15 +135,26 @@ function getWeatherData(local_code){
     $("#date").html(month+"-"+date+"-"+hour+":00"+"("+day+")");
     var weather;
     var n;
-
-    //土曜日か、それ以外で処理をかえる
-    if(day == "土")
+    console.log(hour);
+    //土曜日の11時以前の場合
+    // if(day == "土" && hour < 11)
+    if(day != "土")
     {
-        console.log("土曜日");
+        console.log("土曜日 & 11時以前の場合");
         // 天気予報のデータを取得する。
-
-
-
+        $.ajax({
+            url: 'http://'+weather_api_domain+'/'+weather_api_userid+'/daily/?p1='+local_code+'&p2=today&type=jsonp&callback=?',
+            type: "GET",
+            dataType: 'json'
+        })
+        //天気予報APIを取得した場合
+        .done(function(data){
+            weather = data['daily'];
+            $("#weather_forecast_date").html(weather["date"]+"(土)");
+            $("#weather_forecast_telop").html(weather["telop"]);
+            $("#weather_forecast_wDescription").html(weather["wDescription"]);
+            df.resolve(weather["telop"]);
+        });
     }
     else
     {
@@ -157,7 +168,6 @@ function getWeatherData(local_code){
         })
         //天気予報APIを取得した場合
         .done(function(data){
-            // console.log(data);
             var weathers_arr =  data["weekly"]["weather"];
             jQuery.each(weathers_arr,function(i,val)
             {
