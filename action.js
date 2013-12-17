@@ -6,7 +6,7 @@ $(function(){
     var df = $.Deferred();
     getWeather().done(function(data){
         //天気予報の情報を取得したあとに行う処理
-        console.log(data);
+        console.log("処理終わったー");
 
 
 

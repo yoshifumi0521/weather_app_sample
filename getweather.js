@@ -122,55 +122,57 @@ function getWeatherData(local_code){
     var df = $.Deferred();
     var weather_api_domain = "w001.tenkiapi.jp";
     var weather_api_userid = "ddd01898684d17699c30acba0bf1386702646231";
-    $.ajax({
-        url: 'http://'+weather_api_domain+'/'+weather_api_userid+'/weekly/?p1='+local_code+'&type=jsonp&callback=?',
-        type: "GET",
-        dataType: 'json'
-    })
-    //天気予報APIを取得した場合
-    .done(function(data){
-        console.log(data);
-        //今日の時刻と曜日を調べる。
-        var hiduke = new Date();
-        var year = hiduke.getFullYear();
-        var month = hiduke.getMonth()+1;
-        var hour = hiduke.getHours();
-        var date = hiduke.getDate();
-        var day_array = new Array("日","月","火","水","木","金","土");
-        var day_number = hiduke.getDay();
-        var day = day_array[day_number];
-        $("#date").html(month+"-"+date+"-"+hour+":00"+"("+day+")");
-        // 土曜日の天気の情報を取得する。
-        var weathers_arr =  data["weekly"]["weather"];
-        var weather;
-        var n;
-        //土曜日か、それ以外で判定する。
-        if(day == "土")
-        {
-            console.log("土曜日");
-            //ここがちょっと不明
+
+    //今日の時刻と曜日を調べる。
+    var hiduke = new Date();
+    var year = hiduke.getFullYear();
+    var month = hiduke.getMonth()+1;
+    var hour = hiduke.getHours();
+    var date = hiduke.getDate();
+    var day_array = new Array("日","月","火","水","木","金","土");
+    var day_number = hiduke.getDay();
+    var day = day_array[day_number];
+    $("#date").html(month+"-"+date+"-"+hour+":00"+"("+day+")");
+    var weather;
+    var n;
+
+    //土曜日か、それ以外で処理をかえる
+    if(day == "土")
+    {
+        console.log("土曜日");
+        // 天気予報のデータを取得する。
 
 
 
-        }
-        else
-        {
-            console.log("土曜日以外");
-            //今週の土曜日の天気を調べる。
-            var saturday_data = year+"-"+month+"-"+(date+6-day_number);
+    }
+    else
+    {
+        console.log("土曜日以外");
+        //今週の土曜日の天気を調べる。
+        var saturday_data = year+"-"+month+"-"+(date+6-day_number);
+        $.ajax({
+            url: 'http://'+weather_api_domain+'/'+weather_api_userid+'/weekly/?p1='+local_code+'&type=jsonp&callback=?',
+            type: "GET",
+            dataType: 'json'
+        })
+        //天気予報APIを取得した場合
+        .done(function(data){
+            // console.log(data);
+            var weathers_arr =  data["weekly"]["weather"];
             jQuery.each(weathers_arr,function(i,val)
             {
                 if(val["date"] == saturday_data)
                 {
                     weather = val;
+                    $("#weather_forecast_date").html(weather["date"]+"(土)");
+                    $("#weather_forecast_telop").html(weather["telop"]);
+                    $("#weather_forecast_wDescription").html(weather["wDescription"]);
+                    df.resolve(weather["telop"]);
                 }
             });
-        }
-        $("#weather_forecast_date").html(weather["date"]+"(土)");
-        $("#weather_forecast_telop").html(weather["telop"]);
-        $("#weather_forecast_wDescription").html(weather["wDescription"]);
-        df.resolve(weather["telop"]);
-    });
+        });
+
+    }
     return df.promise();
 }
 
