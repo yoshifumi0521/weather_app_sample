@@ -137,8 +137,7 @@ function getWeatherData(local_code){
     var n;
     console.log(hour);
     //土曜日の11時以前の場合
-    // if(day == "土" && hour < 11)
-    if(day != "土")
+    if(day == "土" && hour < 11)
     {
         console.log("土曜日 & 11時以前の場合");
         // 天気予報のデータを取得する。
