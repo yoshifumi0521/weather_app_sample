@@ -136,24 +136,54 @@ function getWeatherData(local_code){
     var weather;
     var n;
     console.log(hour);
-    //土曜日の11時以前の場合
-    if(day == "土" && hour < 11)
+    //土曜日の17時で分ける
+    if(day == "土")
     {
-        console.log("土曜日 & 11時以前の場合");
-        // 天気予報のデータを取得する。
-        $.ajax({
-            url: 'http://'+weather_api_domain+'/'+weather_api_userid+'/daily/?p1='+local_code+'&p2=today&type=jsonp&callback=?',
-            type: "GET",
-            dataType: 'json'
-        })
-        //天気予報APIを取得した場合
-        .done(function(data){
-            weather = data['daily'];
-            $("#weather_forecast_date").html(weather["date"]+"(土)");
-            $("#weather_forecast_telop").html(weather["telop"]);
-            $("#weather_forecast_wDescription").html(weather["wDescription"]);
-            df.resolve(weather["telop"]);
-        });
+        console.log("土曜日");
+        //17時以前
+        if(hour < 17 )
+        {
+            // 天気予報のデータを取得する。
+            $.ajax({
+                url: 'http://'+weather_api_domain+'/'+weather_api_userid+'/daily/?p1='+local_code+'&p2=today&type=jsonp&callback=?',
+                type: "GET",
+                dataType: 'json'
+            })
+            //天気予報APIを取得した場合
+            .done(function(data){
+                weather = data['daily'];
+                $("#weather_forecast_date").html(weather["date"]+"(土)");
+                $("#weather_forecast_telop").html(weather["telop"]);
+                $("#weather_forecast_wDescription").html(weather["wDescription"]);
+                df.resolve(weather["telop"]);
+            });
+        }
+        //17時以降
+        else
+        {
+            var saturday_data = year+"-"+month+"-"+(date+7);
+            $.ajax({
+                url: 'http://'+weather_api_domain+'/'+weather_api_userid+'/weekly/?p1='+local_code+'&type=jsonp&callback=?',
+                type: "GET",
+                dataType: 'json'
+            })
+            //天気予報APIを取得した場合
+            .done(function(data){
+                var weathers_arr =  data["weekly"]["weather"];
+                jQuery.each(weathers_arr,function(i,val)
+                {
+                    if(val["date"] == saturday_data)
+                    {
+                        weather = val;
+                        $("#weather_forecast_date").html(weather["date"]+"(土)");
+                        $("#weather_forecast_telop").html(weather["telop"]);
+                        $("#weather_forecast_wDescription").html(weather["wDescription"]);
+                        df.resolve(weather["telop"]);
+                    }
+                });
+            });
+        }
+
     }
     else
     {
