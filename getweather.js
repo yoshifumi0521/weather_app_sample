@@ -23,16 +23,14 @@ function getWeather(){
     //パラメーターで郵便番号を受け取る。
     var params = getUrlVars();
     var postcode = params["zip1"]+params["zip2"];
-    $("#postcode").html(postcode);
 
     //APIの処理を直列処理する。
     getLocation(postcode).pipe(getLocalCode).pipe(getWeatherData).pipe(getWeatherPattern).done(function(data){
         //処理が終わったあとにする処理
         df.resolve(data);
-    }).fail(function(){
+    }).fail(function(data){
         //すべたの処理がうまくいなかったとき
-        alert('エラー');
-
+        df.reject(data);
     });
     return df.promise();
 }
@@ -54,39 +52,42 @@ function getUrlVars()
 
 //yahooAPIを使って、郵便番号から位置情報を取得する
 function getLocation(postcode){
-    console.log("郵便番号から位置情報を取得スタート");
     var df = $.Deferred();
+    //YahooアプリケーションのID
     var yahool_app_id = "dj0zaiZpPTBWWDNjMVpIM0xUUiZzPWNvbnN1bWVyc2VjcmV0Jng9MTI-";
     var yahoo_api_url = 'http://search.olp.yahooapis.jp/OpenLocalPlatform/V1/zipCodeSearch?appid='+yahool_app_id+'&query='+postcode+'&output=json&callback=?';
     //Ajax通信をする。
     $.ajax({
-        type: "GET",
-        async: false,
+        type: "get",
         url: yahoo_api_url,
         dataType: 'json'
     })
     //YahooAPIで位置情報を取得した後の処理。
     .done(function(data){
-        // console.log(data);
-        var location = data["Feature"][0]["Geometry"]["Coordinates"];
-        $("#location").html(location);
-        df.resolve(location);
-    }).fail(function(){
-        // alert('エラー');
+        if(data["ResultInfo"]["Count"] == 0)
+        {
+            df.reject("YahooAPIに接続できているが、一つも天気の情報が取得できない");
+        }
+        else
+        {
+            var location = data["Feature"][0]["Geometry"]["Coordinates"];
+            df.resolve(location);
+        }
+    })
+    .fail(function(){
+        df.reject("yahooAPIのエラー");
     });
     return df.promise();
 }
 
 //位置情報を使って、地域コードを取得する。
 function getLocalCode(location){
-    console.log("地域コードを取得スタート");
     var df = $.Deferred();
     var lat = location.split(",")[1];
     var lng = location.split(",")[0];
     //localcode.jsonを読み込む
     $.ajax({
         url: 'api/localcode.json',
-        async: false,
         type: "GET",
         dataType: 'json'
     }).done(function(data){
@@ -106,40 +107,33 @@ function getLocalCode(location){
                 city = val["city"];
             }
         });
-        $("#local_code").html(local_code);
-        $("#prefecture").html(prefecture);
-        $("#city").html(city);
-        // con
         df.resolve(local_code);
-        // return local_code;
-    })
+    }).fail(function(){
+        df.reject("api/localcode.jsonのエラー");
+    });
     return df.promise();
 }
 
-// //天気予報の情報を取得
+//天気予報の情報を取得
 function getWeatherData(local_code){
-    console.log("天気予報APIで、天気予報情報を取得");
     var df = $.Deferred();
     var weather_api_domain = "w001.tenkiapi.jp";
     var weather_api_userid = "ddd01898684d17699c30acba0bf1386702646231";
 
     //今日の時刻と曜日を調べる。
-    var hiduke = new Date();
-    var year = hiduke.getFullYear();
-    var month = hiduke.getMonth()+1;
-    var hour = hiduke.getHours();
-    var date = hiduke.getDate();
+    var now = new Date();
+    var nYear = now.getFullYear();
+    var nMonth = now.getMonth();
+    var hour = now.getHours();
+    var nDate = now.getDate();
     var day_array = new Array("日","月","火","水","木","金","土");
-    var day_number = hiduke.getDay();
+    var day_number = now.getDay();
     var day = day_array[day_number];
-    $("#date").html(month+"-"+date+"-"+hour+":00"+"("+day+")");
     var weather;
     var n;
-    console.log(hour);
     //土曜日の17時で分ける
     if(day == "土")
     {
-        console.log("土曜日");
         //17時以前
         if(hour < 17 )
         {
@@ -152,16 +146,16 @@ function getWeatherData(local_code){
             //天気予報APIを取得した場合
             .done(function(data){
                 weather = data['daily'];
-                $("#weather_forecast_date").html(weather["date"]+"(土)");
-                $("#weather_forecast_telop").html(weather["telop"]);
-                $("#weather_forecast_wDescription").html(weather["wDescription"]);
                 df.resolve(weather["telop"]);
+            }).fail(function(){
+                df.reject("天気予報APIのエラー");
             });
         }
         //17時以降
         else
         {
-            var saturday_data = year+"-"+month+"-"+(date+7);
+            var saturday = new Date(nYear,nMonth,nDate+7);
+            var saturday_date = saturday.getFullYear()+"-"+(saturday.getMonth()+1)+"-"+saturday.getDate();
             $.ajax({
                 url: 'http://'+weather_api_domain+'/'+weather_api_userid+'/weekly/?p1='+local_code+'&type=jsonp&callback=?',
                 type: "GET",
@@ -172,24 +166,23 @@ function getWeatherData(local_code){
                 var weathers_arr =  data["weekly"]["weather"];
                 jQuery.each(weathers_arr,function(i,val)
                 {
-                    if(val["date"] == saturday_data)
+                    if(val["date"] == saturday_date)
                     {
                         weather = val;
-                        $("#weather_forecast_date").html(weather["date"]+"(土)");
-                        $("#weather_forecast_telop").html(weather["telop"]);
-                        $("#weather_forecast_wDescription").html(weather["wDescription"]);
                         df.resolve(weather["telop"]);
                     }
                 });
+            }).fail(function(){
+                df.reject("天気予報APIのエラー");
             });
         }
 
     }
     else
     {
-        console.log("土曜日以外");
         //今週の土曜日の天気を調べる。
-        var saturday_data = year+"-"+month+"-"+(date+6-day_number);
+        var saturday = new Date(nYear,nMonth,nDate+6-day_number);
+        var saturday_date = saturday.getFullYear()+"-"+(saturday.getMonth()+1)+"-"+saturday.getDate();
         $.ajax({
             url: 'http://'+weather_api_domain+'/'+weather_api_userid+'/weekly/?p1='+local_code+'&type=jsonp&callback=?',
             type: "GET",
@@ -200,17 +193,17 @@ function getWeatherData(local_code){
             var weathers_arr =  data["weekly"]["weather"];
             jQuery.each(weathers_arr,function(i,val)
             {
-                if(val["date"] == saturday_data)
+                if(val["date"] == saturday_date)
                 {
                     weather = val;
-                    $("#weather_forecast_date").html(weather["date"]+"(土)");
-                    $("#weather_forecast_telop").html(weather["telop"]);
-                    $("#weather_forecast_wDescription").html(weather["wDescription"]);
                     df.resolve(weather["telop"]);
                 }
             });
+        })
+        //エラーの場合
+        .fail(function(){
+            df.reject("天気予報APIのエラー");
         });
-
     }
     return df.promise();
 }
@@ -218,7 +211,6 @@ function getWeatherData(local_code){
 //天気のパターンを取得するメソッド
 function getWeatherPattern(weather_telop)
 {
-    console.log("天気のパターンを取得-");
     var df = $.Deferred();
     $.ajax({
         url: 'api/weatherpattern.json',
@@ -229,10 +221,13 @@ function getWeatherPattern(weather_telop)
         {
             if(weather_telop == val["code"])
             {
-                $("#weather_forecast_pattern").html(val["weather"]);
                 df.resolve(val["weather"]);
             }
         });
+    })
+    //エラーの場合
+    .fail(function(){
+        df.reject("api/weatherpattern.jsonのエラー");
     });
     return df.promise();
 }

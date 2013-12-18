@@ -19,24 +19,6 @@
 
 <h1>天気予報APIのサンプル</h1>
 
-<strong>郵便番号</strong>は、<span id="postcode"></span><br>
-
-<strong>位置情報(経度,緯度)</strong>は、<span id="location"></span><br>
-
-<strong>地域コード</strong>は、<span id="local_code"></span><br>
-
-<strong>prefecture</strong>は、<span id="prefecture"></span><br>
-
-<strong>city</strong>は、<span id="city"></span><br>
-
-<strong>今日</strong>は、<span id="date"></span><br>
-
-<strong>表示する天気予報の日付は、</strong><span id="weather_forecast_date"></span><br>
-
-<strong>表示する天気予報の天気テロップ番号は、</strong><span id="weather_forecast_telop"></span><br>
-
-<strong>表示する天気予報の説明は、</strong><span id="weather_forecast_wDescription"></span><br>
-
 <strong>表示する天気予報パターンは、</strong><span id="weather_forecast_pattern"></span><br>
 
 
