@@ -155,7 +155,7 @@ function getWeatherData(local_code){
         else
         {
             var saturday = new Date(nYear,nMonth,nDate+7);
-            var saturday_date = saturday.getFullYear()+"-"+(saturday.getMonth()+1)+"-"+saturday.getDate();
+            var saturday_date = saturday.getFullYear()+"-0"+(saturday.getMonth()+1)+"-"+saturday.getDate();
             $.ajax({
                 url: 'http://'+weather_api_domain+'/'+weather_api_userid+'/weekly/?p1='+local_code+'&type=jsonp&callback=?',
                 type: "GET",
@@ -182,7 +182,7 @@ function getWeatherData(local_code){
     {
         //今週の土曜日の天気を調べる。
         var saturday = new Date(nYear,nMonth,nDate+6-day_number);
-        var saturday_date = saturday.getFullYear()+"-"+(saturday.getMonth()+1)+"-"+saturday.getDate();
+        var saturday_date = saturday.getFullYear()+"-0"+(saturday.getMonth()+1)+"-"+saturday.getDate();
         $.ajax({
             url: 'http://'+weather_api_domain+'/'+weather_api_userid+'/weekly/?p1='+local_code+'&type=jsonp&callback=?',
             type: "GET",
@@ -195,10 +195,12 @@ function getWeatherData(local_code){
             {
                 if(val["date"] == saturday_date)
                 {
+
                     weather = val;
                     df.resolve(weather["telop"]);
                 }
             });
+
         })
         //エラーの場合
         .fail(function(){
