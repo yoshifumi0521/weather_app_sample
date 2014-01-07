@@ -155,7 +155,7 @@ function getWeatherData(local_code){
         else
         {
             var saturday = new Date(nYear,nMonth,nDate+7);
-            var saturday_date = saturday.getFullYear()+"-0"+(saturday.getMonth()+1)+"-"+saturday.getDate();
+            var saturday_date = saturday.getFullYear()+"-"+toDoubleDigits(saturday.getMonth()+1)+"-"+toDoubleDigits(saturday.getDate());
             $.ajax({
                 url: 'http://'+weather_api_domain+'/'+weather_api_userid+'/weekly/?p1='+local_code+'&type=jsonp&callback=?',
                 type: "GET",
@@ -182,7 +182,7 @@ function getWeatherData(local_code){
     {
         //今週の土曜日の天気を調べる。
         var saturday = new Date(nYear,nMonth,nDate+6-day_number);
-        var saturday_date = saturday.getFullYear()+"-0"+(saturday.getMonth()+1)+"-"+saturday.getDate();
+        var saturday_date = saturday.getFullYear()+"-"+toDoubleDigits(saturday.getMonth()+1)+"-"+toDoubleDigits(saturday.getDate());
         $.ajax({
             url: 'http://'+weather_api_domain+'/'+weather_api_userid+'/weekly/?p1='+local_code+'&type=jsonp&callback=?',
             type: "GET",
@@ -261,3 +261,13 @@ function cal_distance(lat1, lon1, lat2, lon2){
 
     return Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
 }
+
+// 1桁の数字を0埋めで2桁にする
+var toDoubleDigits = function(num) {
+    num += "";
+    if (num.length === 1) {
+        num = "0" + num;
+    }
+    return num;
+};
+
